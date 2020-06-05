@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import PropTypes from 'prop-types';
 import axios from "axios";
 
 class SearchField extends Component {
@@ -27,8 +26,14 @@ class SearchField extends Component {
       e.preventDefault();
   };
 
+  fetch
+
   handleChange = (e) => {
     this.setState({value: e.target.value});
+  }
+
+  componentDidMount() {
+    
   }
 
   render() {
