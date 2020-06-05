@@ -33,7 +33,7 @@ class SearchField extends Component {
   }
 
   componentDidMount() {
-    this
+    
   }
 
   render() {
