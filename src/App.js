@@ -47,10 +47,11 @@ class App extends Component {
   render() {
     const gifs = () => 
       this.state.gifs.map((gif) => {
-        const url = gif.images.original.webp;
+        const url = gif.images.fixed_width.webp;
         const title = gif.title;
         return (
         <GifCard
+         key={gif.id}
          url={url}
          title={title}
          />
