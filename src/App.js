@@ -32,6 +32,8 @@ class App extends Component {
   };
 
   handleSearch = (value) => {
+    if(value==="")
+      return;
     const url = `http://api.giphy.com/v1/gifs/search?q=${value}`;
     const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
     axios
