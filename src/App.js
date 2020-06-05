@@ -32,9 +32,12 @@ class App extends Component {
   };
 
   handleSearch = (value) => {
+    if(value==="")
+      return;
     const url = `http://api.giphy.com/v1/gifs/search?q=${value}`;
     const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
-    axios.get(url, { params: { api_key: API_KEY } })
+    axios
+      .get(url, { params: { api_key: API_KEY } })
       .then((response) => {
         const data = response.data.data;
         this.setState({ gifs: data });
@@ -45,25 +48,26 @@ class App extends Component {
   };
 
   render() {
-    const gifs = () => 
+    const gifs = () =>
       this.state.gifs.map((gif) => {
-        const url = gif.images.original.webp;
+        const url = gif.images.fixed_width.webp;
         const title = gif.title;
-        return (
-        <GifCard
-         url={url}
-         title={title}
-         />
-        );
+        return <GifCard key={gif.id} url={url} title={title} />;
       });
-    
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <SearchField onSubmit={this.handleSearch} />
-          <div>{gifs()}</div>
-        </header>
-      </div>
+      <>
+        <div className="jumbotron">
+          <h1 className="display-4 text-center">Gif Search React App</h1>
+          <hr className="my-4" />
+        </div>
+        <div className="App">
+          <header className="App-header">
+            <SearchField onSubmit={this.handleSearch} />
+            <div className="gifs-container">{gifs()}</div>
+          </header>
+        </div>
+      </>
     );
   }
 }
