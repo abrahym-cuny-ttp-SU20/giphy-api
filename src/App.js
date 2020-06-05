@@ -31,8 +31,8 @@ constructor(props) {
       });
   }
 
-  handleSearch = (e) => {
-    const url = `http://api.giphy.com/v1/gifs/search?q=${this.state.value}`;
+  handleSearch = (value) => {
+    const url = `http://api.giphy.com/v1/gifs/search?q=${value}`;
     const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
     axios.get(url,{params: {api_key: API_KEY}})
       .then( response => {
@@ -42,11 +42,10 @@ constructor(props) {
     .catch((err) => {
       console.log(err);
     });
-    e.preventDefault();
   };
 
   render() {
-
+    
   return (
     <div className="App">
       <header className="App-header">
