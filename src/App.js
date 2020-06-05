@@ -1,11 +1,12 @@
 import React from 'react';
+import SearchField from './components/SearchField'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       Hello
+       <SearchField/>
       </header>
     </div>
   );
